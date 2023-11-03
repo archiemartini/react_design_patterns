@@ -1,4 +1,5 @@
 import './App.css';
+import axios from 'axios';
 import RegularList from './components/RegularList';
 import SplitScreen from './components/SplitScreen';
 import SmallPersonListItem from './components/people/SmallPersonListItem';
@@ -12,6 +13,7 @@ import UserInfo from './components/people/UserInfo';
 import UserLoader from './components/containers/UserLoader';
 import ResourceLoader from './components/containers/ResourceLoader.js';
 import ProductInfo from './components/products/ProductInfo';
+import DataSource from './components/containers/DataSource';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -69,8 +71,31 @@ function App() {
     rating: 4.2,
   }];
 
+  const getServerData = url => async () => {
+    const response = await axios.get(url);
+    return response.data;
+  }
+  
+
   return (
     <>
+      <h1 className='header'>DataSource Container Component</h1>
+      <p className='header'>Two examples:</p>
+      <DataSource 
+        getDataFunc={async () => {
+          const response = await axios.get('/users/123')
+          return response.data
+        }}
+        resourceName="user"
+      >
+        <UserInfo />
+      </DataSource> 
+      <DataSource 
+        getDataFunc={getServerData('/users/123')}
+        resourceName="user"
+      >
+        <UserInfo />
+      </DataSource> 
       <h1 className='header'>ResourceLoader Container Component</h1>
       <ResourceLoader resourceUrl="/users/123" resourceName="user">
         <UserInfo />
