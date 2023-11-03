@@ -18,6 +18,7 @@ import UncontrolledForm from './components/uncontrolled/UncontrolledForm';
 import ControlledForm from './components/controlled/ControlledForm';
 import ControlledModal from './components/controlled/ControlledModal';
 import { useState } from 'react';
+import UncontrolledOnboardingFlow from './components/uncontrolled/UncontrolledOnboardingFlow';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -86,10 +87,39 @@ function App() {
   }
 
   const Text = ({ message }) => <h1>{message}</h1>;
+
+  const StepOne = ({goToNext}) => (
+    <>
+      <h1>Step 1</h1>
+      <button onClick={() => goToNext({ name: 'John Doe'})}>Next</button>
+    </>
+  )
+  const StepTwo = ({goToNext}) => (
+    <>
+      <h1>Step 2</h1>
+      <button onClick={() => goToNext({ age: 100})}>Next</button>
+    </>
+  )
+  const StepThree = ({goToNext}) => (
+    <>
+      <h1>Step 3</h1>
+      <button onClick={() => goToNext({ hairColor: 'brown'})}>Next</button>
+    </>
+  )
   
 
   return (
     <>
+      <h1 className='header'>Uncontrolled Onboarding Flow Component</h1>
+      <p className='header'>The problem with this, although it will work, is it only displays Step 1. But the components themselves, 2, and 3, don't have any way to go to the next step</p>
+      <UncontrolledOnboardingFlow onFinish={data => {
+        console.log(data)
+        alert('Onboarding Complete')
+        }}>
+        <StepOne/>
+        <StepTwo/>
+        <StepThree/>
+      </UncontrolledOnboardingFlow>
       <h1 className='header'>Controlled Modal Component</h1>
       <p className='header'>We already have an example of a uncontrolled modal further down the page. This modal controls whether or not its shown and whether it's hidden. The main problem is none of the other components, the parent component, really has no control over what this Modal is doing. Let's say we had an outer button we wanted to control the previous Modal, now we do...</p>
       <ControlledModal 
