@@ -7,6 +7,11 @@ import LargeProductListItem from './components/products/LargeProductListItem';
 import SmallProductListItem from './components/products/SmallProductListItem';
 import NumberedList from './components/NumberedList';
 import Modal from './components/Modal';
+import CurrentUserLoader from './components/containers/CurrentUserLoader';
+import UserInfo from './components/people/UserInfo';
+import UserLoader from './components/containers/UserLoader';
+import ResourceLoader from './components/containers/ResourceLoader.js';
+import ProductInfo from './components/products/ProductInfo';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -66,6 +71,27 @@ function App() {
 
   return (
     <>
+      <h1 className='header'>ResourceLoader Container Component</h1>
+      <ResourceLoader resourceUrl="/users/123" resourceName="user">
+        <UserInfo />
+      </ResourceLoader>
+      <ResourceLoader resourceUrl="/products/1234" resourceName="product">
+        <ProductInfo />
+      </ResourceLoader>
+      <h1 className='header'>UserLoader Container Component</h1>
+      <UserLoader userId="123">
+        <UserInfo />
+      </UserLoader>
+      <UserLoader userId="234">
+        <UserInfo />
+      </UserLoader>
+      <UserLoader userId="345">
+        <UserInfo />
+      </UserLoader>
+      <h1 className='header'>CurrentUserLoader Container Component</h1>
+      <CurrentUserLoader>
+        <UserInfo />
+      </CurrentUserLoader>
       <h1 className='header'>Modal Components</h1>
       <Modal>
         <LargeProductListItem product={products[0]} />
