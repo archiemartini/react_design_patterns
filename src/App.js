@@ -16,6 +16,8 @@ import ProductInfo from './components/products/ProductInfo';
 import DataSource from './components/containers/DataSource';
 import UncontrolledForm from './components/uncontrolled/UncontrolledForm';
 import ControlledForm from './components/controlled/ControlledForm';
+import ControlledModal from './components/controlled/ControlledModal';
+import { useState } from 'react';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -38,6 +40,7 @@ const RightHandComponent = ({message}) => {
 
 
 function App() {
+  const [shouldShowModal, setShouldShowModal] = useState(false);
 
   const people = [{
     name: 'John Doe',
@@ -87,11 +90,22 @@ function App() {
 
   return (
     <>
+      <h1 className='header'>Controlled Modal Component</h1>
+      <p className='header'>We already have an example of a uncontrolled modal further down the page. This modal controls whether or not its shown and whether it's hidden. The main problem is none of the other components, the parent component, really has no control over what this Modal is doing. Let's say we had an outer button we wanted to control the previous Modal, now we do...</p>
+      <ControlledModal 
+        shouldShow={shouldShowModal}
+        onRequestClose={() => setShouldShowModal(false)}
+      >
+        <h1>Hello!</h1>
+      </ControlledModal>
+      <button onClick={() => setShouldShowModal(!shouldShowModal)}>
+        {shouldShowModal ? 'Hide Modal' : 'Show Modal' }
+      </button>
       <h1 className='header'>Controlled Form Component</h1>
       <ControlledForm />
       <h1 className='header'>Uncontrolled Form Component</h1>
       <UncontrolledForm />
-      <h1 className='header'>Uncontrolled and Controlled Components</h1>
+      <h1 className='header'>^^Uncontrolled and Controlled Components^^</h1>
       <p className='header'>Uncontrollled Components:</p>
       <p className='header'>Components that keep track of their own states and rlease data only when some event occurs (that is, the submit event for HTML forms). Controlled components are easier to test, mroe reusable, and generally preferred.</p>
       <p className='header'>Controllled Components:</p>
