@@ -14,6 +14,7 @@ import UserLoader from './components/containers/UserLoader';
 import ResourceLoader from './components/containers/ResourceLoader.js';
 import ProductInfo from './components/products/ProductInfo';
 import DataSource from './components/containers/DataSource';
+import UncontrolledForm from './components/uncontrolled/UncontrolledForm';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -75,10 +76,25 @@ function App() {
     const response = await axios.get(url);
     return response.data;
   }
+
+  const getLocalStorageData = (key) => () => {
+    return localStorage.getItem(key)
+  }
+
+  const Text = ({ message }) => <h1>{message}</h1>;
   
 
   return (
     <>
+      <h1 className='header'>Uncontrolled Form Component</h1>
+      <UncontrolledForm>
+        
+      </UncontrolledForm>
+      <h1 className='header'>Uncontrolled and Controlled Components</h1>
+      <p className='header'>Uncontrollled Components:</p>
+      <p className='header'>Components that keep track of their own states and rlease data only when some event occurs (that is, the submit event for HTML forms). Controlled components are easier to test, mroe reusable, and generally preferred.</p>
+      <p className='header'>Controllled Components:</p>
+      <p className='header'>Components that do not keep track of their own state - all state is passed in as a prop (that is, when we use the useState Hook with text inputs)</p>
       <h1 className='header'>DataSource Container Component</h1>
       <p className='header'>Two examples:</p>
       <DataSource 
@@ -95,6 +111,14 @@ function App() {
         resourceName="user"
       >
         <UserInfo />
+      </DataSource> 
+      <h2 className='header'>DataSource with LocalStorage</h2>
+      <p className='header'>For this you may have to open up developer tools to manually enter a key/value into Application>localstorage</p>
+      <DataSource 
+        getDataFunc={getLocalStorageData('message')}
+        resourceName="message"
+      >
+        <Text />
       </DataSource> 
       <h1 className='header'>ResourceLoader Container Component</h1>
       <ResourceLoader resourceUrl="/users/123" resourceName="user">
