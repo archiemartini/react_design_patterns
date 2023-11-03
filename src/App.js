@@ -15,6 +15,7 @@ import ResourceLoader from './components/containers/ResourceLoader.js';
 import ProductInfo from './components/products/ProductInfo';
 import DataSource from './components/containers/DataSource';
 import UncontrolledForm from './components/uncontrolled/UncontrolledForm';
+import ControlledForm from './components/controlled/ControlledForm';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -86,10 +87,10 @@ function App() {
 
   return (
     <>
+      <h1 className='header'>Controlled Form Component</h1>
+      <ControlledForm />
       <h1 className='header'>Uncontrolled Form Component</h1>
-      <UncontrolledForm>
-        
-      </UncontrolledForm>
+      <UncontrolledForm />
       <h1 className='header'>Uncontrolled and Controlled Components</h1>
       <p className='header'>Uncontrollled Components:</p>
       <p className='header'>Components that keep track of their own states and rlease data only when some event occurs (that is, the submit event for HTML forms). Controlled components are easier to test, mroe reusable, and generally preferred.</p>
