@@ -19,6 +19,7 @@ import ControlledForm from './components/controlled/ControlledForm';
 import ControlledModal from './components/controlled/ControlledModal';
 import { useState } from 'react';
 import UncontrolledOnboardingFlow from './components/uncontrolled/UncontrolledOnboardingFlow';
+import ControlledOnboardingFlow from './components/controlled/ControlledOnboardingFlow';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -103,13 +104,40 @@ function App() {
   const StepThree = ({goToNext}) => (
     <>
       <h1>Step 3</h1>
+      <p>Congrats, you qualify for a senior discount!</p>
+      <button onClick={() => goToNext({})}>Next</button>
+    </>
+  )
+
+  const StepFour = ({goToNext}) => (
+    <>
+      <h1>Step 4</h1>
       <button onClick={() => goToNext({ hairColor: 'brown'})}>Next</button>
     </>
   )
+
+  const [onboardingData, setOnboardingData] = useState({})
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const onNext = (stepData) => {
+    setOnboardingData({...onboardingData, ...stepData})
+    setCurrentIndex(currentIndex + 1)
+  }
   
 
   return (
     <>
+      <h1 className='header'>Controlled Onboarding Flow Component</h1>
+      <p className='header'>This gives us way more flexibility within our onboarding flow</p>
+      <ControlledOnboardingFlow
+        currentIndex={currentIndex}
+        onNext={onNext}
+      >
+        <StepOne />
+        <StepTwo />
+       {onboardingData.age >= 62 && <StepThree />}
+        <StepFour />
+      </ControlledOnboardingFlow>
       <h1 className='header'>Uncontrolled Onboarding Flow Component</h1>
       <p className='header'>The problem with this, although it will work, is it only displays Step 1. But the components themselves, 2, and 3, don't have any way to go to the next step</p>
       <UncontrolledOnboardingFlow onFinish={data => {
