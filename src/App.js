@@ -28,6 +28,7 @@ import useCurrentUser from './hooks/useCurrentUser';
 import UserInfoHooked from './components/people/UserInfoHooked';
 import ProductInfoHooked from './components/products/ProductInfoHooked';
 import UserInfoDataSourced from './components/people/UserInfoDataSourced';
+import RecursiveComponent from './components/functionalComponents/RecursiveComponent'
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -138,10 +139,52 @@ function App() {
 
   const UserInfoWithLoader = withUser(UserInfo, '234')
 
-  
+  // FOr the Functional programming section
+
+  const nestedObject = {
+    a: 1,
+    b: {
+      b1: 4,
+      b2: {
+        b23: 'Hello',
+      },
+      b3: {
+        b31: {
+          message: 'Hi',
+        },
+        b32: {
+          message: 'Hi',
+        }
+      }
+    },
+    c: {
+      c1: 2,
+      c2: 3,
+    }
+  }
 
   return (
     <>
+      <h1 className='header'>Recursive Component</h1>
+      <RecursiveComponent data={nestedObject} />
+      <h1 className='header'>^^Functional Programming^^</h1>
+      <p>A method of organising code in a way that</p>
+      <ol>
+        <li>Minimises mutation and stat change</li>
+        <li>keeps functions independent of external data</li>
+        <li>Treats functions as first-class citizens</li>
+        <li></li>
+      </ol>
+      <h3>Applications of FP in React</h3>
+      <ul>
+        <li>Controlled compoentns - as we've seen before</li>
+        <li>Function components - an example being usage of functional React components, in itself is functional</li>
+        <li>Higher Order components - functions that return functions, making them first class functions</li>
+        <li>Recursive Components - use recursion in order to achieve a desired effect</li>
+        <li>Partially applied components - we can begin with more general components and then with passing in more props, create more specific versions of the same component</li>
+        <li>Component composition</li>
+      </ul>
+      <p className='header'></p>
       <h1 className='header'>useDataSource</h1>
       <p className='header'>Usage found in UserInfoDataSourced.js</p>
       <UserInfoDataSourced userId={'123'}/>
