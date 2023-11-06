@@ -177,7 +177,6 @@ function App() {
         <li>Minimises mutation and stat change</li>
         <li>keeps functions independent of external data</li>
         <li>Treats functions as first-class citizens</li>
-        <li></li>
       </ol>
       <h3>Applications of FP in React</h3>
       <ul>
