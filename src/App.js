@@ -27,6 +27,7 @@ import UserInfoFormResource from './components/people/UserInfoFormResource';
 import useCurrentUser from './hooks/useCurrentUser';
 import UserInfoHooked from './components/people/UserInfoHooked';
 import ProductInfoHooked from './components/products/ProductInfoHooked';
+import UserInfoDataSourced from './components/people/UserInfoDataSourced';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -141,6 +142,9 @@ function App() {
 
   return (
     <>
+      <h1 className='header'>useDataSource</h1>
+      <p className='header'>Usage found in UserInfoDataSourced.js</p>
+      <UserInfoDataSourced userId={'123'}/>
       <h1 className='header'>useResource</h1>
       <ProductInfoHooked productId={'2345'}/>
       <h1 className='header'>useCurrentUser // useUser</h1>
