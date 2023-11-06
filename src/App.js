@@ -30,6 +30,7 @@ import ProductInfoHooked from './components/products/ProductInfoHooked';
 import UserInfoDataSourced from './components/people/UserInfoDataSourced';
 import RecursiveComponent from './components/functionalComponents/RecursiveComponent'
 import { BigSuccessButton, DangerButton } from './components/functionalComponents/Composition';
+import { BigSuccessButtonPartial, DangerButtonPartial } from './components/higherOrderComponents/partiallyApply';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -166,6 +167,10 @@ function App() {
 
   return (
     <>
+      <h1 className='header'>Partially Applied Components</h1>
+      <p>For this I've created a HigherOrder Component called partiallyApply.js</p>
+      <BigSuccessButtonPartial text="YES" />
+      <DangerButtonPartial text="Dont do it!" />
       <h1 className='header'>Composition Component</h1>
       <BigSuccessButton text="YES"/>
       <DangerButton text="Dont do it!"/>
