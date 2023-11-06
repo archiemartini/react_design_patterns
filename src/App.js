@@ -26,6 +26,7 @@ import UserInfoForm from './components/people/UserInfoForm';
 import UserInfoFormResource from './components/people/UserInfoFormResource';
 import useCurrentUser from './hooks/useCurrentUser';
 import UserInfoHooked from './components/people/UserInfoHooked';
+import ProductInfoHooked from './components/products/ProductInfoHooked';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -140,7 +141,9 @@ function App() {
 
   return (
     <>
-      <h1 className='header'>useCurrentUser</h1>
+      <h1 className='header'>useResource</h1>
+      <ProductInfoHooked productId={'2345'}/>
+      <h1 className='header'>useCurrentUser // useUser</h1>
       <h3>Returns a user object:</h3>
       <h3>{JSON.stringify(useCurrentUser())}</h3>
       <UserInfoHooked userId={'123'} />

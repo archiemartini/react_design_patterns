@@ -1,9 +1,11 @@
 import useCurrentUser from "../../hooks/useCurrentUser";
+import useResource from "../../hooks/useResource";
 import useUser from "../../hooks/useUser";
 
 const UserInfoHooked = ({userId}) => {
   // const user = useCurrentUser();
   const user = useUser(userId)
+  // const user = useResource(`/users/${userId}`)
 	const { name, age, hairColor, hobbies } = user || {};
 
 	return user ? (
