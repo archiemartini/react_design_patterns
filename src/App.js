@@ -143,7 +143,9 @@ function App() {
       <h1 className='header'>useCurrentUser</h1>
       <h3>Returns a user object:</h3>
       <h3>{JSON.stringify(useCurrentUser())}</h3>
-      <UserInfoHooked />
+      <UserInfoHooked userId={'123'} />
+      <UserInfoHooked userId={'234'} />
+      <UserInfoHooked userId={'345'} />
       <p className='header'>The tutorial wanted me to edit UserInfo.js but again for posterity's sake, I'm using UserInfoHooked.js</p>
       <h1 className='header'>^^Custom Hooks^^</h1>
       <h1 className='header'>A Editable Wrapped General Resource Loader HO-Component</h1>

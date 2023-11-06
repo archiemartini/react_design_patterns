@@ -1,7 +1,9 @@
 import useCurrentUser from "../../hooks/useCurrentUser";
+import useUser from "../../hooks/useUser";
 
-const UserInfoHooked = () => {
-  const user = useCurrentUser();
+const UserInfoHooked = ({userId}) => {
+  // const user = useCurrentUser();
+  const user = useUser(userId)
 	const { name, age, hairColor, hobbies } = user || {};
 
 	return user ? (
