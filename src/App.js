@@ -29,6 +29,7 @@ import UserInfoHooked from './components/people/UserInfoHooked';
 import ProductInfoHooked from './components/products/ProductInfoHooked';
 import UserInfoDataSourced from './components/people/UserInfoDataSourced';
 import RecursiveComponent from './components/functionalComponents/RecursiveComponent'
+import { BigSuccessButton, DangerButton } from './components/functionalComponents/Composition';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -165,6 +166,9 @@ function App() {
 
   return (
     <>
+      <h1 className='header'>Composition Component</h1>
+      <BigSuccessButton text="YES"/>
+      <DangerButton text="Dont do it!"/>
       <h1 className='header'>Recursive Component</h1>
       <RecursiveComponent data={nestedObject} />
       <h1 className='header'>^^Functional Programming^^</h1>
