@@ -23,6 +23,9 @@ import ControlledOnboardingFlow from './components/controlled/ControlledOnboardi
 import printProps from './components/higherOrderComponents/printProps';
 import withUser from './components/higherOrderComponents/withUser';
 import UserInfoForm from './components/people/UserInfoForm';
+import UserInfoFormResource from './components/people/UserInfoFormResource';
+import useCurrentUser from './hooks/useCurrentUser';
+import UserInfoHooked from './components/people/UserInfoHooked';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -137,6 +140,15 @@ function App() {
 
   return (
     <>
+      <h1 className='header'>useCurrentUser</h1>
+      <h3>Returns a user object:</h3>
+      <h3>{JSON.stringify(useCurrentUser())}</h3>
+      <UserInfoHooked />
+      <p className='header'>The tutorial wanted me to edit UserInfo.js but again for posterity's sake, I'm using UserInfoHooked.js</p>
+      <h1 className='header'>^^Custom Hooks^^</h1>
+      <h1 className='header'>A Editable Wrapped General Resource Loader HO-Component</h1>
+      <p className='header'>The tutorial actually wanted me to edit the UserInfoForm.js below but I'm just going to use a new UserInfoFormResource.js for posterity's sake. Take a look at the interesting way the props are built out using the resourceName prop.</p>
+      <UserInfoFormResource />
       <h1 className='header'>A Editable Wrapped Loader HO-Component</h1>
       <UserInfoForm />
       <p className='header'>In every example before now we've  initialised the higher order component within the APp.js and the passed it throught there. What you're also allowed to do is simply use this HOC when you define a Component in the first place, see UserInfoForm.js</p>
@@ -206,7 +218,7 @@ function App() {
         <UserInfo />
       </DataSource> 
       <h2 className='header'>DataSource with LocalStorage</h2>
-      <p className='header'>For this you may have to open up developer tools to manually enter a key/value into Application>localstorage</p>
+      <p className='header'>For this you may have to open up developer tools to manually enter a key/value into Application.localstorage</p>
       <DataSource 
         getDataFunc={getLocalStorageData('message')}
         resourceName="message"
