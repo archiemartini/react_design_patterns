@@ -20,6 +20,7 @@ import ControlledModal from './components/controlled/ControlledModal';
 import { useState } from 'react';
 import UncontrolledOnboardingFlow from './components/uncontrolled/UncontrolledOnboardingFlow';
 import ControlledOnboardingFlow from './components/controlled/ControlledOnboardingFlow';
+import printProps from './components/higherOrderComponents/printProps';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -123,10 +124,18 @@ function App() {
     setOnboardingData({...onboardingData, ...stepData})
     setCurrentIndex(currentIndex + 1)
   }
+
+  const UserInfoWrapped = printProps(UserInfo)
   
 
   return (
     <>
+
+
+      <h1 className='header'>A Wrapped Component</h1>
+      <UserInfoWrapped a={1} b={"Hiya"} c={{name: 'Shaun'}} />
+      <h1 className='header'>^^Higher Order Components^^</h1>
+      <p className='header'>A component that returns another component instead of JSX. They do not follow conventions like components, so no Pascal case.</p>
       <h1 className='header'>Controlled Onboarding Flow Component</h1>
       <p className='header'>This gives us way more flexibility within our onboarding flow</p>
       <ControlledOnboardingFlow
