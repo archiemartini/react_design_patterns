@@ -21,6 +21,7 @@ import { useState } from 'react';
 import UncontrolledOnboardingFlow from './components/uncontrolled/UncontrolledOnboardingFlow';
 import ControlledOnboardingFlow from './components/controlled/ControlledOnboardingFlow';
 import printProps from './components/higherOrderComponents/printProps';
+import withUser from './components/higherOrderComponents/withUser';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -125,14 +126,20 @@ function App() {
     setCurrentIndex(currentIndex + 1)
   }
 
+  // Higher Order Component Setup
+
   const UserInfoWrapped = printProps(UserInfo)
+
+  const UserInfoWithLoader = withUser(UserInfo, '234')
+
   
 
   return (
     <>
-
-
-      <h1 className='header'>A Wrapped Component</h1>
+      <h1 className='header'>A Wrapped Loader HO-Component</h1>
+      <UserInfoWithLoader />
+      <h1 className='header'>A Wrapped HO-Component</h1>
+      <p className='header'>See we only return 'Loading...' because we don't supply a user object to UserInfo, do check the console logs coming from within printProps.</p>
       <UserInfoWrapped a={1} b={"Hiya"} c={{name: 'Shaun'}} />
       <h1 className='header'>^^Higher Order Components^^</h1>
       <p className='header'>A component that returns another component instead of JSX. They do not follow conventions like components, so no Pascal case.</p>
