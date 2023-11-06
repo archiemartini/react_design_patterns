@@ -22,6 +22,7 @@ import UncontrolledOnboardingFlow from './components/uncontrolled/UncontrolledOn
 import ControlledOnboardingFlow from './components/controlled/ControlledOnboardingFlow';
 import printProps from './components/higherOrderComponents/printProps';
 import withUser from './components/higherOrderComponents/withUser';
+import UserInfoForm from './components/people/UserInfoForm';
 
 const LeftHandComponent = ({ message }) => {
   return (
@@ -136,6 +137,9 @@ function App() {
 
   return (
     <>
+      <h1 className='header'>A Editable Wrapped Loader HO-Component</h1>
+      <UserInfoForm />
+      <p className='header'>In every example before now we've  initialised the higher order component within the APp.js and the passed it throught there. What you're also allowed to do is simply use this HOC when you define a Component in the first place, see UserInfoForm.js</p>
       <h1 className='header'>A Wrapped Loader HO-Component</h1>
       <UserInfoWithLoader />
       <h1 className='header'>A Wrapped HO-Component</h1>
